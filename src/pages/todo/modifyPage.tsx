@@ -1,4 +1,5 @@
 import { useParams } from "react-router"
+import ModifyComponent from "../../components/todo/modifyComponent"
 
 
 
@@ -10,6 +11,7 @@ function ModifyPage()
         <div className="bg-white w-full">
             <div className="text-4xl">
                 Todo ModifyPage Page {tno} 
+                <ModifyComponent tno={Number(tno)} />
             </div>
         </div>
     )

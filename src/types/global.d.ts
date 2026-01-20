@@ -10,7 +10,8 @@ interface UseCustomMoveReturn {
     moveToModify: (tno: number) => void
     moveToRead: (tno: number) => void
     page: number
-    size: number
+    size: number,
+    refresh: boolean
 }
 
 interface PageRequestDTO {
@@ -30,3 +31,12 @@ interface PageResponseDTO<T> {
     totalPage: number
     current: number
 }
+
+interface ResultModal {
+    title: string,
+    content: string,
+    callbackFn? : () => void
+}
+
+
+

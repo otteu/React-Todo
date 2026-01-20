@@ -6,7 +6,7 @@ import PageComponent from "../common/pageComponent"
 
 function ListComponent() {
 
-    const {moveToRead, moveToList, page, size}: UseCustomMoveReturn = useCustomMove()
+    const {moveToRead, moveToList, page, size, refresh}: UseCustomMoveReturn = useCustomMove()
 
     const [serverData, setServerData] = useState<PageResponseDTO<Todo> | undefined>()
 
@@ -20,7 +20,7 @@ function ListComponent() {
             console.log(data)
             setServerData(data)
         })
-    }, [page, size])
+    }, [page, size, refresh])
 
     return (
         <>

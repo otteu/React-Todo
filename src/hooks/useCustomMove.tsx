@@ -1,9 +1,12 @@
+import { useState } from "react"
 import { createSearchParams, useNavigate, useSearchParams } from "react-router"
 
 
 function useCustomMove(): UseCustomMoveReturn {
     const naviate = useNavigate()
     const [queryParams] = useSearchParams()
+
+    const [refresh, setRefresh] = useState<boolean>(false)
 
     const pageStr: string | null = queryParams.get("page")
     const sizeStr: string | null = queryParams.get("size")
@@ -26,6 +29,12 @@ function useCustomMove(): UseCustomMoveReturn {
                 page: String(pageNum),
                 size: String(sizeNum),
             }).toString()
+
+            if(queryStr === queryDefault)
+            {
+                setRefresh(!refresh)
+            }
+
         } else {
             queryStr = queryDefault
         }
@@ -38,11 +47,11 @@ function useCustomMove(): UseCustomMoveReturn {
     }
 
     const moveToRead = (tno: number) => {
-        
-        naviate({ pathname: `../modify/${tno}`, search: queryDefault })
+
+        naviate({ pathname: `../read/${tno}`, search: queryDefault })
     }
 
-    return {moveToList, moveToModify, moveToRead, page, size}
+    return {moveToList, moveToModify, moveToRead, page, size, refresh}
 }
 
 export default useCustomMove
