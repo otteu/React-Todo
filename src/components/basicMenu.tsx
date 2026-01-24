@@ -23,6 +23,12 @@ function BasicMenu()
                             Todo
                         </NavLink>
                     </li>
+
+                    <li className="pr-6 text-2xl">
+                        <NavLink to={"/product"}>
+                            Product
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </nav>
