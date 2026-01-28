@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import BasicMenu from "../components/basicMenu";
+import BasicMenu from "../components/menus/basicMenu";
 
 const BasicLayout = () => {
   return (

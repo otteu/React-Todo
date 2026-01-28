@@ -1,9 +1,13 @@
 import { NavLink } from "react-router";
-
+import { useSelector } from "react-redux";
+import type { LoginInfo } from "../../slice/loginSlice";
+import type { RootState } from "../../store";
 
 
 function BasicMenu()
 {
+    const loginState:LoginInfo = useSelector((state: RootState) => state.loginSlice);
+
     return(
         <nav id="navbar" className="flex bg-blue-300">
             <div className="w-4/5 bg-gray-500">
@@ -18,19 +22,36 @@ function BasicMenu()
                             About
                         </NavLink>
                     </li>
+                    { loginState.email && <>
                     <li className="pr-6 text-2xl">
                         <NavLink to={"/todo"}>
                             Todo
                         </NavLink>
                     </li>
-
+                    </>
+                    }
                     <li className="pr-6 text-2xl">
                         <NavLink to={"/product"}>
                             Product
                         </NavLink>
                     </li>
+                    
                 </ul>
             </div>
+
+            <div className="w-1/5 flex justify-end bg-orange-300 p-4 font-medium">
+                { ! loginState.email ?
+                    <div className="text-white text-sm m-1 rounded" >
+                        
+                        <NavLink to='/member/login'>Login</NavLink>
+                    </div>
+                    :
+                    <div className="text-white text-sm m-1 rounded" >
+                        <NavLink to='/member/logout'>Logout</NavLink>
+                    </div>
+                }
+            </div>
+            
         </nav>
     )
 }

@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router";
 import BasicLayout from "../layouts/basicLayout";
 import todoRouter from "./todoRouter";
 import productsRouter from "./productRouter";
+import memberRouter from "./memberRouter";
 
 const Loading = () => <div>Loading....</div>
 const Main = lazy(() => import("../pages/mainPage"))
@@ -29,7 +30,8 @@ const router = createBrowserRouter(
                 todoRouter(),
                 productsRouter()
             ]
-        }
+        },
+        memberRouter()
     ]
 )
 
